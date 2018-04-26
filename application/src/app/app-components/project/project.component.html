@@ -1,0 +1,83 @@
+<div class="project-component_wrapper">
+
+    <div class="project-component_project-name_wrapper">
+        <h1 class="project-component_project-name">
+            {{name}}
+        </h1>
+    </div>
+
+    <div class="project-component_project-wrapper">
+
+        <div class="project-component_info-wrapper">
+            <h2 class="project-component_project-short-description">
+                {{shortDescription}}
+            </h2>
+            <p class="project-component_project-days-left">
+                This project has {{daysLeft}} days and {{hoursLeft}} hours left.
+            </p>
+        </div>
+
+        <div class="project-component_goal-wrapper">
+
+            <div class="project-component_fund-wrapper">
+                <div class="project-component_fund-numbers-wrapper">
+                    <div>
+                        <p class="project-component_fund-number">
+                            {{limit}}
+                        </p>
+                        <p class="project-component_fund-type">
+                            Ziel
+                        </p>
+                    </div>
+                    <div>
+                        <p class="project-component_fund-number">
+                            {{raised}}
+                        </p>
+                        <p class="project-component_fund-type">
+                            Erreicht
+                        </p>
+                    </div>
+                </div>
+                <div class="project-component_fund-bar-wrapper">
+                    <mat-progress-bar
+                        [color]=        "primary"
+                        [mode]=         "determinate"
+                        [value]=        "progressbar"
+                        [bufferValue]=  "progressbar">
+                    </mat-progress-bar>
+                </div>
+            </div>
+
+        </div>
+
+
+    </div>
+
+    <div class="project-component_project-long-description_wrapper">
+        <p class="project-component_project-long-description">
+            {{longDescription}}
+        </p>
+    </div>
+
+    <div class="project-component_fund-amount_wrapper">
+        <div>
+            <mat-form-field>
+                <input [(ngModel)]="this.fundAmount" matInput placeholder="Amount" type="number" class="example-right-align" #fundAmountTextFieldValue (keyup)="valueChanged()">
+                <span matPrefix>ETH &nbsp;</span>
+            </mat-form-field>
+        </div>
+        <div>
+            <button [class.disabled]="!validInput" class="project-component_button" (click)="sendFund()">Support this project</button>
+            <p class="project-component_fund-amount_error-message" *ngIf="!validInput">
+                Please insert an amount greater than 0 to support this project.
+            </p>
+        </div>
+    </div>
+    <div class="project-component_withdraw-fund_wrapper" [class.hidden]="!mainAccHasFunded">
+        <p class="project-component_project-days-left">
+            You have supported this project with {{myAmount}} ether.
+        </p>
+        <button [class.hidden]="!dealineReached" class="project-component_withraw-button" (click)="withdrawFund()">Withdraw {{myAmount}} ether from project</button>
+    </div>
+
+</div>

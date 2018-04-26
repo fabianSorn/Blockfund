@@ -1,0 +1,10 @@
+<div class="catalog-projects"  *ngIf="projects && projects.length && (projects.length>0)">
+  <app-project-panel
+    *ngFor="let project of projects"
+    [project] = "project"
+  ></app-project-panel>
+</div>
+
+<a routerLink="/create" routerLinkActive="active">
+  <button class="kc_fab_main_btn">+</button>
+</a>

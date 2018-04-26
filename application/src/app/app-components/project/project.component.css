@@ -1,0 +1,176 @@
+div.project-component_wrapper {
+    width: 100%;
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0px 0px 20px rgba(0 , 0, 0, 0.1);
+}
+
+div.project-component_info-wrapper {
+    background-color: white;
+    width: 100%;
+    padding: 1em;
+}
+
+div.project-component_goal-wrapper {
+    background-color: white;
+    width: 100%;
+    align-items: center;
+    align-content: space-around;
+    justify-content: space-around;
+    padding: 1em;
+}
+
+div.project-component_fund-numbers-wrapper {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    width: 100%;
+    margin-bottom: 1em;
+}
+
+div.project-component_fund-wrapper {
+    margin-top: 0.5em;
+}
+
+div.project-component_fund-bar-wrapper {
+    margin-top: 1em;
+    margin-bottom: 0.5em;
+}
+
+p.project-component_fund-number {
+    font-size: 2em;
+    color: #9E9E9E;
+    padding-bottom: 0.2em;
+}
+
+div.project-component_fund-amount_wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 100%;
+    margin-top: 0.5em;
+    padding-top: 1em;
+    padding-bottom: 1em;
+    padding-left: 1em;
+    padding-right: 1em;
+    text-align: center;
+    background-color: white;
+}
+
+p.project-component_fund-type {
+    font-size: 0.75em;
+    text-align: center;
+}
+
+p.project-component_fund-time {
+    font-size: 0.75em;
+    color: #757575;
+    text-align: center;
+}
+
+@media (min-width: 0px) and (max-width: 768px) {
+    div.project-component_project-wrapper {
+        display: flex;
+        flex-direction: column;
+    }
+}
+
+@media (min-width: 769px) {
+    div.project-component_project-wrapper {
+        display: flex;
+        flex-direction: row;
+    }
+}
+
+div.project-component_project-name_wrapper {
+    background-color: #0D47A1;
+}
+
+h1.project-component_project-name {
+    text-align: center;
+    margin-bottom: 0.5em;
+    margin-top: 0.5em;
+    color: white;
+}
+
+h2.project-component_project-short-description {
+    line-height: 1.5em;
+    color: #616161;
+}
+
+div.project-component_project-long-description_wrapper {
+    padding: 1em;
+}
+
+p.project-component_project-long-description {
+    line-height: 1.5em;
+    color: #616161;
+}
+
+p.project-component_project-days-left {
+    padding-top: 1em;
+    text-align: center;
+}
+
+button.project-component_button {
+    margin: auto;
+    background-color:#FBC02D;
+    color: white;
+    padding: 0.25em;
+    width: 220px;
+    font-size: 1.25em;
+    border-radius: 3em;
+    outline: none;
+    border: none;
+    transition:.3s;            
+}
+
+button.project-component_withraw-button {
+    margin: auto;
+    background-color:#FBC02D;
+    color: white;
+    padding: 0.25em;
+    margin-top: 1em;
+    width: 320px;
+    font-size: 1.25em;
+    border-radius: 3em;
+    outline: none;
+    border: none;
+    transition:.3s;  
+}
+
+.hidden {
+    display: none !important;
+}
+
+div.project-component_withdraw-fund_wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 100%;
+    padding-top: 1em;
+    padding-bottom: 1em;
+    padding-left: 1em;
+    padding-right: 1em;
+    text-align: center;
+    background-color: white;
+}
+
+button.disabled {
+    cursor: not-allowed !important;
+    background-color:#E0E0E0 !important;
+    box-shadow: none !important;
+}
+
+button.project-component_button:hover {
+    box-shadow: 0px 0px 20px rgba(0 , 0, 0, 0.1);   
+    cursor: pointer;          
+}
+
+p.project-component_fund-amount_error-message {
+    margin-top: 1em;
+    color: #E0E0E0;
+}

@@ -1,0 +1,33 @@
+div.catalog-projects{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+    flex-wrap: wrap;
+}
+
+.kc_fab_main_btn{
+    background-color:#FBC02D;
+    width:60px;
+    height:60px;
+    border-radius:100%;
+    background:#FBC02D;
+    border:none;
+    outline:none;
+    color:#FFF;
+    font-size:36px;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.06), 0 3px 6px rgba(0,0,0,0.11);
+    transition:.3s;  
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
+    position: fixed;
+    top: calc(100vh - 85px);
+    left: calc(100vw - 90px);
+  }
+  .kc_fab_main_btn:hover {
+    box-shadow: 0 3px 12px rgba(0,0,0,0.16), 0 3px 12px rgba(0,0,0,0.23);
+    cursor: pointer;
+  }

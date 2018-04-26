@@ -1,0 +1,166 @@
+div.create-component_wrapper {
+    width: 100%;
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0px 0px 20px rgba(0 , 0, 0, 0.1);
+}
+
+div.create-component_info-wrapper {
+    background-color: white;
+    width: 100%;
+    padding: 1em;
+}
+
+div.create-component_goal-wrapper {
+    background-color: white;
+    width: 100%;
+    align-items: center;
+    align-content: space-around;
+    justify-content: space-around;
+    padding: 1em;
+}
+
+div.create-component_fund-amount_wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 100%;
+    margin-top: 0.5em;
+    padding-top: 1em;
+    padding-bottom: 1em;
+    padding-left: 1em;
+    padding-right: 1em;
+    text-align: center;
+    background-color: white;
+}
+
+@media (min-width: 0px) and (max-width: 768px) {
+    div.create-component_project-wrapper {
+        display: flex;
+        flex-direction: column;
+    }
+}
+
+@media (min-width: 769px) {
+    div.create-component_project-wrapper {
+        display: flex;
+        flex-direction: row;
+    }
+}
+
+div.create-component_project-name_wrapper {
+    background-color: #0D47A1;
+}
+
+h1.create-component_project-name {
+    text-align: center;
+    margin-bottom: 0.5em;
+    margin-top: 0.5em;
+    color: white;
+}
+
+h2.create-component_project-short-description {
+    line-height: 1.5em;
+    color: #616161;
+}
+
+div.create-component_project-input_wrapper {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 1em;
+}
+
+@media (min-width: 0px) and (max-width: 768px) {
+    div.create-component_project-input-element_wrapper {
+        flex-direction: column;
+    }
+}
+
+@media (min-width: 769px) {
+    div.create-component_project-input-element_wrapper {
+        flex-direction: row;
+    }
+}
+
+div.create-component_project-input-element_wrapper {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    padding-left: 1em;
+    padding-right: 1em;
+}
+
+div.create-component_project-input-element_wrapper > * {
+    width: 100%;
+    margin: 0.5em;
+}
+
+button.create-component_button {
+    margin: auto;
+    background-color:#FBC02D;
+    color: white;
+    padding: 0.25em;
+    width: 220px;
+    font-size: 1.25em;
+    border-radius: 3em;
+    outline: none;
+    border: none;
+    transition:.3s;            
+}
+
+button.disabled {
+    cursor: not-allowed !important;
+    background-color:#E0E0E0 !important;
+    box-shadow: none !important;
+}
+
+button.create-component_button:hover {
+    box-shadow: 0px 0px 20px rgba(0 , 0, 0, 0.1);   
+    cursor: pointer;          
+}
+
+p.create-component_fund-amount_error-message {
+    margin-top: 1em;
+    color: #E0E0E0;
+}
+
+div.create-component_fund-amount-elements_wrapper {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+}
+
+@media (min-width: 0px) and (max-width: 768px) {
+    div.create-component_fund-amount-elements_wrapper {
+        flex-direction: column;
+    }
+}
+
+@media (min-width: 769px) {
+    div.create-component_fund-amount-elements_wrapper {
+        flex-direction: row;
+    }
+}
+
+h2.create-component_goal-headline {
+    color: #1E88E5;
+    margin-bottom: 0.5em;
+}
+
+h2.create-component_duration-headline {
+    color: #1E88E5;
+    margin-bottom: 1em;
+}
+
+.create-component_duration-input {
+    width: 300px;
+}
+
+input.create-component_project-name {
+    width: 50%;
+}

@@ -1,0 +1,116 @@
+div.project-panel_wrapper {
+    background-color: white;
+    border-radius: 0.5em;
+    box-shadow: 0px 0px 20px rgba(0 , 0, 0, 0.05);
+    width: 350px;
+    margin: 1em;
+    color: #424242;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+h1.project-panel_headline {
+    color: #000000;
+    font-size: 1.25em;
+    font-weight: bolder;
+}
+
+div.project-panel_headline-wrapper {
+    padding-top: 1em;
+    padding-left: 1em;
+    padding-right: 1em;
+    box-sizing: border-box;
+    width: 100%;
+    border-top-left-radius: 0.5em;
+    border-top-right-radius: 0.5em;
+}
+
+p.project-panel_description {
+    line-height: 1.5em;
+    color: #616161;
+}
+
+div.project-panel_description-wrapper {
+    width: 100%;
+    padding: 1em;
+    font-weight: 100;
+}
+
+div.project-panel_fund-numbers-wrapper {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    width: 100%;
+}
+
+div.project-panel_fund-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 100%;
+    padding-top: 0.25em;
+    margin-top: 0.5em;
+    padding-bottom: 0.25em;
+    margin-bottom: 0.5em;
+    padding-left: 1em;
+    padding-right: 1em;
+    text-align: center;
+    background-color: #FAFAFA;
+    border-radius: 0.5em;
+}
+
+div.project-panel_fund-bar-wrapper {
+    margin-top: 1em;
+    margin-bottom: 0.5em;
+}
+
+p.project-panel_fund-number {
+    font-size: 1.25em;
+    color: #9E9E9E;
+    padding-bottom: 0.2em;
+}
+
+p.project-panel_fund-type {
+    font-size: 0.75em;
+}
+
+div.project-panel_fund-time-wrapper {
+
+}
+
+p.project-panel_fund-time {
+    font-size: 0.75em;
+    color: #757575;
+    text-align: center;
+}
+
+div.project-panel_button-wrapper {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding-left: 1em;
+    padding-right: 1em;
+    padding-bottom: 0.75em;
+    box-sizing: border-box;
+}
+
+button.project-panel_button {
+    margin: auto;
+    background-color:#FBC02D;
+    color: white;
+    padding: 0.25em;
+    width: 120px;
+    font-size: 1.25em;
+    border-radius: 3em;
+    outline: none;
+    border: none;
+    transition:.3s;            
+}
+
+button.project-panel_button:hover {
+    box-shadow: 0px 0px 20px rgba(0 , 0, 0, 0.1);   
+    cursor: pointer;
+}

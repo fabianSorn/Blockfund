@@ -1,0 +1,60 @@
+<div class="project-panel_wrapper">
+  <div>
+    <div class="project-panel_headline-wrapper">
+      <h1 class="project-panel_headline">
+        {{projectName}}
+      </h1>
+    </div>
+    <div class="project-panel_description-wrapper">
+      <div>
+        <p class="project-panel_description">
+            {{projectShortDescription}}
+        </p>
+      </div>
+      <div class="project-panel_fund-wrapper">
+
+        <div class="project-panel_fund-numbers-wrapper">
+          <div>
+            <p class="project-panel_fund-number">
+                {{projectLimit}}
+            </p>
+            <p class="project-panel_fund-type">
+              Ziel
+            </p>
+          </div>
+  
+          <div>
+            <p class="project-panel_fund-number">
+                {{projectRaised}}
+            </p>
+            <p class="project-panel_fund-type">
+              Erreicht
+            </p>
+          </div>
+        </div>
+
+        <div class="project-panel_fund-bar-wrapper">
+          <mat-progress-bar
+              class="example-margin"
+              [color]="primary"
+              [mode]="determinate"
+              [value]="progressbar"
+              [bufferValue]="progressbar">
+          </mat-progress-bar>
+        </div>
+      </div>
+
+      <div class="project-panel_fund-time-wrapper">
+        <p class="project-panel_fund-time">
+          noch {{projectDays}} Tage und {{projectHours}} Stunden
+        </p>
+      </div>
+
+    </div>
+  </div>
+  <div class="project-panel_button-wrapper">
+    <a [routerLink]="['/project', projectAddress]" routerLinkActive="active">
+      <button class="project-panel_button">Show</button>
+    </a>
+  </div>
+</div>

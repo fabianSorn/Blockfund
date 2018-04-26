@@ -1,0 +1,120 @@
+<div class="create-component_wrapper">
+
+    <div class="create-component_project-name_wrapper">
+        <h1 class="create-component_project-name">
+            Create a new project
+        </h1>
+    </div>
+
+    <div class="create-component_project-wrapper">
+
+        <div class="create-component_info-wrapper">
+            <h2 class="create-component_project-short-description">
+                Here you can create a new project to finance your idea.
+                You can define a name, address, descriptions, goal and duration for your campaign.
+            </h2>
+        </div>
+
+
+    </div>
+
+    <div class="create-component_project-input_wrapper">
+        <div class="create-component_project-input-element_wrapper">
+            <mat-form-field>
+                <input
+                    matInput
+                    (change)="valueChanged()"
+                    [(ngModel)]="this.name"
+                    class="create-component_project-input-field"
+                    placeholder="Project Name">
+            </mat-form-field>
+            <mat-form-field>
+                <input
+                    matInput
+                    (change)="valueChanged()"
+                    [(ngModel)]="this.address"
+                    class="create-component_project-input-field"
+                    [disabled]="!addressEditable"
+                    placeholder="Wallet Address">
+                <mat-hint [hidden]="!addressEditable" align="end">{{this.addressErrorLabel}}</mat-hint>
+            </mat-form-field>
+        </div>
+        <div class="create-component_project-input-element_wrapper">
+            <mat-form-field>
+                <textarea
+                    matInput
+                    [(ngModel)]="this.shortDescription"
+                    (change)="valueChanged()"
+                    class="create-component_project-input-field"
+                    placeholder="Short description"
+                    matTextareaAutosize
+                    matAutosizeMinRows="1"
+                    matAutosizeMaxRows="10"
+                ></textarea>
+            </mat-form-field>
+        </div>
+        <div class="create-component_project-input-element_wrapper">
+            <mat-form-field>
+                <textarea
+                    matInput
+                    [(ngModel)]="this.longDescription"
+                    (change)="valueChanged()"
+                    class="create-component_project-input-field"
+                    placeholder="Long description"
+                    matTextareaAutosize
+                    matAutosizeMinRows="1"
+                    matAutosizeMaxRows="10"
+                ></textarea>
+            </mat-form-field>
+        </div>
+    </div>
+
+
+    <div class="create-component_fund-amount_wrapper">
+        <div class="create-component_fund-amount-elements_wrapper">
+            <div>
+                <h2 class="create-component_goal-headline">Your goal</h2>
+                <mat-form-field>
+                    <input
+                        matInput
+                        [(ngModel)]="this.goal"
+                        placeholder="Amount"
+                        type="number"
+                        class="example-right-align"
+                        (change)="valueChanged()">
+                    <span matPrefix>ETH &nbsp;</span>
+                </mat-form-field>
+            </div>
+
+            <div>
+                <h2 class="create-component_duration-headline">Duration of this campaign</h2>
+                <mat-slider
+                    class="create-component_duration-input"
+                    [(ngModel)]="this.duration"
+                    (change)="valueChanged()"
+                    [disabled]="disabled"
+                    [invert]="invert"
+                    [color]=primary
+                    [max]="max"
+                    [min]="min"
+                    [step]="step"
+                    [thumb-label]="thumbLabel"
+                    [tick-interval]="tickInterval"
+                    [vertical]="vertical">
+                </mat-slider>
+            </div>
+
+        </div>
+        <div>
+            <button
+                [class.disabled]="!validInput"
+                class="create-component_button"
+                (click)="createProject()"
+            > Create this project </button>
+            <p class="create-component_fund-amount_error-message" *ngIf="!validInput">
+                Please fill out all the fields to create your project.
+            </p>
+        </div>
+    </div>
+
+</div>

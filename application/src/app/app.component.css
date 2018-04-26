@@ -1,0 +1,27 @@
+div.title-page-header_wrapper {
+    width: 100vw;
+    overflow-x: hidden;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    vertical-align: middle;
+    box-shadow: 0px 0px 20px rgba(0 , 0, 0, 0.1);
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    z-index: 1000;
+}
+
+img.title-page-header_image {
+    max-height: 4em;
+}
+
+img.title-page-header_image:hover {
+    cursor: pointer;
+}
+
+div.app_router-outlet_wrapper{
+    margin-top: 5em;
+    margin-bottom: 2em;
+}
