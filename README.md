@@ -88,4 +88,4 @@ After you created the project, you must wait for Ganache to mine it. This should
 ## Future Plans
 
 - Add reaction for event emitting -> autorefresh page when transactions are mined
-- Look into configuring a docker container that provides truffle, node, npm angular and local geth node with private blockchain so configuration (https://github.com/ethereum/go-ethereum/wiki/Running-in-Docker)
+- Look into configuring a docker container that provides truffle, node, npm angular and local geth node with private blockchain as an environment (https://github.com/ethereum/go-ethereum/wiki/Running-in-Docker)
