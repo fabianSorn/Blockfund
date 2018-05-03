@@ -11,11 +11,9 @@ contract Blockfund {
     event NewProjectAdded (address contractAddress);
 
   constructor() public {
-    // Set Blockfund Contract Admin as
     admin = msg.sender;
   }
 
-  // ~~~~~~~~~~~~~~~~~~~~~~~~~ Modifiers ~~~~~~~~~~~~~~~~~~~~~~~~~
 
   modifier adminOnly() {
     if (msg.sender == admin) {
@@ -23,7 +21,6 @@ contract Blockfund {
     }
   }
 
-  // ~~~~~~~~~~~~~~~~~~~~~~~~~ Getter ~~~~~~~~~~~~~~~~~~~~~~~~~
 
   function getAllExistingProjects() public view returns (address[]) {
     return projects;
@@ -33,12 +30,7 @@ contract Blockfund {
     return admin;
   }
 
-  // ~~~~~~~~~~~~~~~~~~~~~~~~~ Contract-Interaction ~~~~~~~~~~~~~~~~~~~~~~~~~
-
-  /**
-   * Create a new Blockfund-Project and add it to the project-array
-   *
-   */
+  // Create a new Blockfund-Project and add it to the project-array
   function createNewProject(
     string name,
     string shortDescription,

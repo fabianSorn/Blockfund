@@ -3,7 +3,6 @@ pragma solidity ^0.4.23;
 
 contract Project {
 
-  // Parameters for Porject
   string  private projectName;
   string  private projectShortDescription;
   string  private projectLongDescription;
@@ -12,16 +11,12 @@ contract Project {
   uint    private projectDurationInSeconds;
   uint    private projectGoal;
   uint    private amountRaised;
-  // States the contract can be in
   bool    private fundingGoalReached;
   bool    private deadlineReached;
-  // Saving Supporters and their raised amount
   mapping (address => uint256) private supporter;
-  // Events for notifying gui clients about updates
   event GoalReached   (address creator, uint raisedAmount);
   event FundTransfer  (address backer, uint amount, bool isContribution);
 
-  // Create a new project instance
   constructor (
     string name,
     string shortDesc,
@@ -32,7 +27,7 @@ contract Project {
   ) public
   {
     // creator cannot be retrieved from msg.sender, because msg.sender is the
-    // blockfund-contract address -> mus be given by hand
+    // blockfund-contract address -> must be given by hand
     projectCreator = creator;
     projectName = name;
     projectShortDescription = shortDesc;
@@ -121,7 +116,7 @@ contract Project {
   }
 
   function safeWithdrawal() public afterDeadline {
-      // refund if goal is not reached
+      // refund contributors if goal is not reached
       checkGoalReached();
       if (!fundingGoalReached) {
           uint amount = supporter[msg.sender];
