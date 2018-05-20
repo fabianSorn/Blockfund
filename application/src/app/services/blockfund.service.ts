@@ -164,7 +164,8 @@ export class BlockfundService {
           })
           .then(value => {
             observer.next(value);
-            console.log('New Transaction for project', contractInstanceAddress, 'with amount', amount, 'from address', funder);
+            console.log('New Transaction for project',
+              contractInstanceAddress, 'with amount', amount, 'from address', funder);
             observer.complete();
           })
           .catch(e => {

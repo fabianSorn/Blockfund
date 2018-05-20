@@ -3,16 +3,19 @@ pragma solidity ^0.4.23;
 
 contract Project {
 
-  string  private projectName;
-  string  private projectShortDescription;
-  string  private projectLongDescription;
-  address private projectCreator;
-  uint    private projectDeadline;
-  uint    private projectDurationInSeconds;
-  uint    private projectGoal;
-  uint    private amountRaised;
-  bool    private fundingGoalReached;
-  bool    private deadlineReached;
+  struct ProjectInformation {
+    string  name;
+    string  shortDescription;
+    string  longDescription;
+    address creator;
+    uint    deadline;
+    uint    durationInSeconds;
+    uint    goal;
+    uint    amountRaised;
+    bool    fundingGoalReached;
+    bool    deadlineReached;
+  }
+  ProjectInformation project;
   mapping (address => uint256) private supporter;
   event GoalReached   (address creator, uint raisedAmount);
   event FundTransfer  (address backer, uint amount, bool isContribution);
@@ -28,30 +31,30 @@ contract Project {
   {
     // creator cannot be retrieved from msg.sender, because msg.sender is the
     // blockfund-contract address -> must be given by hand
-    projectCreator = creator;
-    projectName = name;
-    projectShortDescription = shortDesc;
-    projectLongDescription = longDesc;
-    // duration in hours
-    projectDurationInSeconds = duration * 1 days;
-    projectDeadline = now + projectDurationInSeconds;
-    // goal given ether & saved in wei
-    projectGoal = fundingGoal * 1 ether;
-    amountRaised = 0;
-    fundingGoalReached = false;
-    deadlineReached = false;
+    project =  ProjectInformation({
+      creator: creator,
+      name: name,
+      shortDescription: shortDesc,
+      longDescription: longDesc,
+      durationInSeconds: (duration * 1 days),
+      deadline: (now + project.durationInSeconds),
+      goal: (fundingGoal * 1 ether),
+      amountRaised: 0,
+      fundingGoalReached: (project.amountRaised >= project.goal),
+      deadlineReached: false
+    });
   }
 
   // ~~~~~~~~~~~~~~~~~~~~~~~~~ Modifiers ~~~~~~~~~~~~~~~~~~~~~~~~~
 
   modifier afterDeadline() {
-    if (now >= projectDeadline) {
+    if (now >= project.deadline) {
       _;
     }
   }
 
   modifier onlyCreator() {
-    if (msg.sender == projectCreator) {
+    if (msg.sender == project.creator) {
       _;
     }
   }
@@ -59,24 +62,24 @@ contract Project {
   // ~~~~~~~~~~~~~~~~~~~~~~~~~ Getter ~~~~~~~~~~~~~~~~~~~~~~~~~
 
   function getDeadline() public view returns (uint) {
-    return projectDeadline;
+    return project.deadline;
   }
 
   function getTimeToGoInSeconds() public view returns (uint) {
     // Also check overflow of difference between now and deadline
-    if((projectDeadline - now) <= 0 || (projectDeadline - now) > projectDurationInSeconds) {
+    if((project.deadline - now) <= 0 || (project.deadline - now) > project.durationInSeconds) {
       return 0;
     } else {
-      return (projectDeadline - now);
+      return (project.deadline - now);
     }
   }
 
   function getGoalReached() public view returns (bool) {
-    return (amountRaised >= projectGoal);
+    return (project.amountRaised >= project.goal);
   }
 
   function getDeadlineReached() public view returns (bool) {
-    return (now >= projectDeadline);
+    return (now >= project.deadline);
   }
 
   function getMyPersonalFundAmount(address funder) public view returns (uint) {
@@ -86,12 +89,12 @@ contract Project {
   // Returns all information of the project relevant for
   function getProjectInformation() public view returns(address, string, string, string, uint, uint, uint) {
     return (
-      projectCreator,
-      projectName,
-      projectShortDescription,
-      projectLongDescription,
-      (amountRaised / (1 ether)),
-      (projectGoal / (1 ether)),
+      project.creator,
+      project.name,
+      project.shortDescription,
+      project.longDescription,
+      (project.amountRaised / (1 ether)),
+      (project.goal / (1 ether)),
       this.getTimeToGoInSeconds()
     );
   }
@@ -99,18 +102,18 @@ contract Project {
   // ~~~~~~~~~~~~~~~~~~~~~~~~~ Contract-Interaction ~~~~~~~~~~~~~~~~~~~~~~~~~
 
   function checkGoalReached() public afterDeadline {
-      if (amountRaised >= projectGoal) {
-          fundingGoalReached = true;
-          emit GoalReached(projectCreator, amountRaised);
+      if (project.amountRaised >= project.goal) {
+          project.fundingGoalReached = true;
+          emit GoalReached(project.creator, project.amountRaised);
       }
-      deadlineReached = true;
+      project.deadlineReached = true;
   }
 
   function () public payable {
-      require(!deadlineReached);
+      require(!project.deadlineReached);
       uint amount = msg.value;
       supporter[msg.sender] += amount;
-      amountRaised += amount;
+      project.amountRaised += amount;
       emit FundTransfer(msg.sender, amount, true);
       checkGoalReached();
   }
@@ -118,12 +121,12 @@ contract Project {
   function safeWithdrawal() public afterDeadline {
       // refund contributors if goal is not reached
       checkGoalReached();
-      if (!fundingGoalReached) {
+      if (!project.fundingGoalReached) {
           uint amount = supporter[msg.sender];
           supporter[msg.sender] = 0;
           if (amount > 0) {
               if (msg.sender.send(amount)) {
-                  amountRaised -= amount;
+                  project.amountRaised -= amount;
                   emit FundTransfer(msg.sender, amount, false);
               } else {
                   supporter[msg.sender] = amount;
@@ -131,13 +134,13 @@ contract Project {
           }
       }
       // creator can withdraw fund when goal is reached
-      if (fundingGoalReached && projectCreator == msg.sender) {
-          if (projectCreator.send(amountRaised)) {
-              amountRaised = 0;
-              emit FundTransfer(projectCreator, amountRaised, false);
+      if (project.fundingGoalReached && project.creator == msg.sender) {
+          if (project.creator.send(project.amountRaised)) {
+              project.amountRaised = 0;
+              emit FundTransfer(project.creator, project.amountRaised, false);
           } else {
               //If we fail to send the funds to beneficiary, unlock supporter balance
-              fundingGoalReached = false;
+              project.fundingGoalReached = false;
           }
       }
   }
