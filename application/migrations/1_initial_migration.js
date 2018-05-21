@@ -1,6 +1,6 @@
-var BlockFund = artifacts.require("./Blockfund.sol");
-var Project = artifacts.require("./Project.sol");
+var Migrations = artifacts.require("Migrations");
 
 module.exports = function(deployer) {
-  deployer.deploy(BlockFund);
+  // Deploy the Migrations contract as our only task
+  deployer.deploy(Migrations);
 };
